@@ -8,6 +8,11 @@
 # 5. create tgw rt association to each tgw attachments
     # Note: you have to associate tgw rt to all tgw attachments 
     # else, ping wont work
+    # open icmp to cidr of each ec2 for ping to work
+
+  # When you share TGW using RAM, go to RAM in receiver account to accept
+  # when receiver create a VPC attachment, requester has to accept that attachment 
+  # ensure you attach TGW RT in requester to the VPC attachment of receiver
 
 
 # 1
@@ -111,4 +116,6 @@ resource "aws_ec2_transit_gateway_route_table_association" "tgwPeering_route_tab
   provider = aws.virginia
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_peering_attachment.peer.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw_route_table.id
+
+  depends_on = [ aws_ec2_transit_gateway_peering_attachment.peer ]
 }
