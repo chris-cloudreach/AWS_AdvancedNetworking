@@ -63,6 +63,7 @@ resource "aws_security_group" "my_app_sg_ue1" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
+    # protocol    = [1] also means icmp
     cidr_blocks = ["10.2.0.0/16"]
   }
   ingress {
