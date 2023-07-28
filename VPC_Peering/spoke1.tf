@@ -14,7 +14,7 @@ module "spoke1" {
   #   lifecycle {
   #   ignore_changes = [
   #     route,
-  #   ]
+  #   ]   
   # }
 }
 
